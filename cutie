@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>For My Cutie 💀❤️</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Creepster&family=Metal+Mania&family=Special+Elite&display=swap');
+        
+        body {
+            font-family: 'Special Elite', cursive;
+            background: #1a0808;
+            background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23300000' fill-opacity='0.08' fill-rule='evenodd'%3E%3Cpath d='M0 38.59l2.83-2.83 1.41 1.41L1.41 40H0v-1.41zM0 1.4l2.83 2.83 1.41-1.41L1.41 0H0v1.41zM38.59 40l-2.83-2.83 1.41-1.41L40 38.59V40h-1.41zM40 1.41l-2.83 2.83-1.41-1.41L38.59 0H40v1.41zM20 18.6l2.83-2.83 1.41 1.41L21.41 20l2.83 2.83-1.41 1.41L20 21.41l-2.83 2.83-1.41-1.41L18.59 20l-2.83-2.83 1.41-1.41L20 18.59z'/%3E%3C/g%3E%3C/svg%3E");
+            text-align: center;
+            padding: 20px;
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            overflow-x: hidden;
+            color: #ff9999;
+            position: relative;
+        }
+        
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, transparent 30%, rgba(0,0,0,0.5) 100%);
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        .letter {
+            background: #0a0000;
+            border: 3px solid #880000;
+            box-shadow: 0 0 15px rgba(255, 0, 0, 0.3);
+            max-width: 500px;
+            margin: 20px auto;
+            padding: 20px;
+            cursor: pointer;
+            position: relative;
+            transition: all 0.3s ease;
+            border-radius: 1px;
+        }
+        
+        .letter::before, .letter::after {
+            content: '☠️';
+            position: absolute;
+            font-size: 24px;
+            top: -12px;
+        }
+        
+        .letter::before {
+            left: 30px;
+        }
+        
+        .letter::after {
+            right: 30px;
+        }
+        
+        .letter h2 {
+            font-family: 'Metal Mania', cursive;
+            text-shadow: 0 0 5px #ff0000;
+            letter-spacing: 2px;
+            color: #ff3333;
+            transform: rotate(-1deg);
+        }
+        
+        .letter:hover {
+            transform: scale(1.02);
+            box-shadow: 0 0 20px rgba(255, 0, 0, 0.5);
+        }
+        
+        .hidden {
+            display: none;
+            color: #ff6666;
+            margin-top: 20px;
+            animation: fadeIn 1s ease;
+            font-family: 'Special Elite', cursive;
+            text-shadow: 0 0 3px rgba(255, 0, 0, 0.5);
+        }
+        
+        .animation-container {
+            display: none;
+            position: relative;
+            width: 100%;
+            height: 50vh;
+            margin-top: 20px;
+        }
+        
+        .phrase-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: flex;
+            gap: 15px;
+            font-size: 64px;
+            font-weight: bold;
+            font-family: 'Creepster', cursive;
+            color: #ff3333;
+            z-index: 10;
+            user-select: none;
+            text-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+        }
+        
+        .letter-anim {
+            position: relative;
+            will-change: transform, opacity;
+        }
+        
+        .heart {
+            color: #ff0000;
+            animation: bloodPulse 1.5s infinite;
+            filter: drop-shadow(0 0 5px #ff0000);
+        }
+        
+        .particle {
+            position: absolute;
+            background: #ff0000;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 5;
+        }
+        
+        .final-heart {
+            position: absolute;
+            font-size: 100px;
+            color: #ff0000;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            opacity: 0;
+            z-index: 15;
+            text-shadow: 0 0 15px #ff0000;
+        }
+        
+        .skull {
+            position: absolute;
+            font-size: 80px;
+            transform-origin: center bottom;
+            opacity: 0;
+            z-index: 20;
+            user-select: none;
+            filter: drop-shadow(0 0 8px rgba(255, 0, 0, 0.7));
+        }
+        
+        .controls {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            display: flex;
+            gap: 10px;
+            z-index: 20;
+        }
+        
+        .btn {
+            padding: 8px 16px;
+            background: rgba(0, 0, 0, 0.7);
+            color: #ff3333;
+            border: 1px solid #700000;
+            border-radius: 3px;
+            cursor: pointer;
+            font-weight: bold;
+            font-family: 'Special Elite', cursive;
+            transition: all 0.3s ease;
+        }
+        
+        .btn:hover {
+            background: rgba(50, 0, 0, 0.7);
+            box-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+        }
+        
+        .reset-btn {
+            background: rgba(80, 0, 0, 0.7);
+        }
+        
+        .continue-btn {
+            display: none;
+            margin: 20px auto;
+            padding: 10px 25px;
+            background: #500000;
+            color: #ff9999;
+            border: 1px solid #ff0000;
+            border-radius: 3px;
+            cursor: pointer;
+            font-weight: bold;
+            font-family: 'Metal Mania', cursive;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            letter-spacing: 1px;
+        }
+        
+        .continue-btn::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: rgba(255, 0, 0, 0.1);
+            transform: rotate(45deg);
+            z-index: 1;
+            transition: all 0.5s ease;
+        }
+        
+        .continue-btn:hover::before {
+            left: 100%;
+        }
+        
+        .continue-btn:hover {
+            background: #700000;
+            transform: scale(1.05);
+            box-shadow: 0 0 15px rgba(255, 0, 0, 0.5);
+        }
+        
+        .blood-drip {
+            position: absolute;
+            width: 6px;
+            height: 25px;
+            background: #ff0000;
+            border-radius: 0 0 3px 3px;
+            box-shadow: 0 0 5px rgba(255, 0, 0, 0.7);
+            opacity: 0;
+        }
+        
+        .barbed-wire {
+            position: fixed;
+            height: 15px;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 15' width='100' height='15'%3E%3Cpath d='M0,7.5 L100,7.5' stroke='%23700000' stroke-width='1'/%3E%3Cpath d='M10,7.5 L10,2 M10,2 L8,0 M10,2 L12,0 M10,7.5 L10,13 M10,13 L8,15 M10,13 L12,15' stroke='%23700000' stroke-width='1'/%3E%3Cpath d='M30,7.5 L30,2 M30,2 L28,0 M30,2 L32,0 M30,7.5 L30,13 M30,13 L28,15 M30,13 L32,15' stroke='%23700000' stroke-width='1'/%3E%3Cpath d='M50,7.5 L50,2 M50,2 L48,0 M50,2 L52,0 M50,7.5 L50,13 M50,13 L48,15 M50,13 L52,15' stroke='%23700000' stroke-width='1'/%3E%3Cpath d='M70,7.5 L70,2 M70,2 L68,0 M70,2 L72,0 M70,7.5 L70,13 M70,13 L68,15 M70,13 L72,15' stroke='%23700000' stroke-width='1'/%3E%3Cpath d='M90,7.5 L90,2 M90,2 L88,0 M90,2 L92,0 M90,7.5 L90,13 M90,13 L88,15 M90,13 L92,15' stroke='%23700000' stroke-width='1'/%3E%3C/svg%3E");
+            width: 100%;
+            background-repeat: repeat-x;
+            z-index: 5;
+            pointer-events: none;
+        }
+        
+        .top-wire {
+            top: 5px;
+        }
+        
+        .bottom-wire {
+            bottom: 5px;
+        }
+        
+        /* Animations */
+        @keyframes bloodPulse {
+            0% { transform: scale(1); filter: drop-shadow(0 0 3px #ff0000); }
+            50% { transform: scale(1.15); filter: drop-shadow(0 0 8px #ff0000); }
+            100% { transform: scale(1); filter: drop-shadow(0 0 3px #ff0000); }
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes bloodDrip {
+            0% { height: 0; opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { height: 80px; opacity: 0; }
+        }
+        
+        /* Mobile compatibility - don't affect the mobile layout */
+        @media (max-width: 768px) {
+            .phrase-container {
+                font-size: 40px;
+                gap: 10px;
+            }
+            
+            .letter h2 {
+                font-size: 24px;
+            }
+            
+            .continue-btn {
+                padding: 8px 16px;
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="barbed-wire top-wire"></div>
+    
+    <div class="letter" onclick="revealMessage()">
+        <h2>💀 Open Me 💀</h2>
+        <p>(Psssttt miss! click ka dito bilis)</p>
+        <div id="message1" class="hidden">
+            <p>Happy birthday cutie!!! <span class="heart">❤️</span></p>
+        </div>
+        <div id="message2" class="hidden">
+            <p>20 kana ah, bilis lng gagi. Pwedeng pwede kana tawaging Tita hahaha <span class="heart">❤️</span></p>
+        </div>
+        <div id="message3" class="hidden">
+            <p>Still can't believe we became a thing, tho am glad it happened <span class="heart">❤️</span></p>
+        </div>
+    </div>
+    
+    <button id="continue-btn" class="continue-btn">Click mo to last na hehe <span class="heart">❤️</span></button>
+    
+    <div id="animation-container" class="animation-container">
+        <div class="phrase-container" id="phrase">
+            <span class="letter-anim">I</span>
+            <span class="letter-anim heart">❤</span>
+            <span class="letter-anim">L</span>
+            <span class="letter-anim">O</span>
+            <span class="letter-anim">V</span>
+            <span class="letter-anim">E</span>
+            <span class="letter-anim">Y</span>
+            <span class="letter-anim">O</span>
+            <span class="letter-anim">U</span>
+        </div>
+        <div class="final-heart" id="finalHeart">❤</div>
+        <div class="skull" id="skull">💀</div>
+        <div class="controls">
+            <button class="btn" id="pause-btn">Pause</button>
+            <button class="btn reset-btn" id="reset-btn">Reset</button>
+        </div>
+    </div>
+    
+    <div class="barbed-wire bottom-wire"></div>
+
+    <script>
+        // Letter reveal functionality
+        let clickCount = 0;
+        const continueBtn = document.getElementById("continue-btn");
+        
+        function createBloodDrip(parent) {
+            const drip = document.createElement('div');
+            drip.className = 'blood-drip';
+            drip.style.left = Math.random() * parent.offsetWidth + 'px';
+            drip.style.top = '0px';
+            parent.appendChild(drip);
+            
+            gsap.to(drip, {
+                height: 30 + Math.random() * 50,
+                opacity: 1,
+                duration: 0.2,
+                onComplete: () => {
+                    gsap.to(drip, {
+                        opacity: 0,
+                        duration: 2 + Math.random() * 3,
+                        delay: 1 + Math.random() * 2,
+                        onComplete: () => drip.remove()
+                    });
+                }
+            });
+            
+            setTimeout(() => {
+                if (parent.contains(drip)) drip.remove();
+            }, 8000);
+        }
+        
+        function revealMessage() {
+            clickCount++;
+            if (clickCount === 1) {
+                document.getElementById("message1").style.display = "block";
+                for (let i = 0; i < 3; i++) createBloodDrip(document.querySelector('.letter'));
+            }
+            if (clickCount === 2) {
+                document.getElementById("message2").style.display = "block";
+                for (let i = 0; i < 3; i++) createBloodDrip(document.querySelector('.letter'));
+            }
+            if (clickCount === 3) {
+                document.getElementById("message3").style.display = "block";
+                continueBtn.style.display = "block";
+                for (let i = 0; i < 5; i++) createBloodDrip(document.querySelector('.letter'));
+            }
+        }
+        
+        // Animation functionality
+        const animationContainer = document.getElementById("animation-container");
+        const letters = document.querySelectorAll('.letter-anim');
+        const pauseBtn = document.getElementById('pause-btn');
+        const resetBtn = document.getElementById('reset-btn');
+        const finalHeart = document.getElementById('finalHeart');
+        const skull = document.getElementById('skull');
+
+        const config = {
+            particleCount: 8,
+            isPaused: false,
+            loopDelay: 3000,
+            hopHeight: 30
+        };
+
+        let masterTimeline;
+
+        function initAnimation() {
+            gsap.set([letters, finalHeart, skull], { clearProps: 'all' });
+            gsap.set(finalHeart, { scale: 0, opacity: 0 });
+            startAnimation();
+            pauseBtn.addEventListener('click', togglePause);
+            resetBtn.addEventListener('click', reset);
+        }
+
+        function startAnimation() {
+            if (masterTimeline) masterTimeline.kill();
+
+            masterTimeline = gsap.timeline({
+                repeat: -1,
+                repeatDelay: config.loopDelay / 1000,
+                onRepeat: resetState
+            });
+
+            masterTimeline.from(letters, {
+                opacity: 0,
+                y: -40,
+                rotation: () => Math.random() * 20 - 10,
+                stagger: 0.1,
+                duration: 0.8,
+                ease: "back.out(1.7)"
+            });
+
+            masterTimeline.add(skullAnimation(), "+=1");
+        }
+
+        function skullAnimation() {
+            const tl = gsap.timeline();
+
+            letters.forEach((letter) => {
+                const rect = letter.getBoundingClientRect();
+                const containerRect = animationContainer.getBoundingClientRect();
+                const x = rect.left - containerRect.left + (rect.width - skull.offsetWidth) / 2;
+                const y = rect.top - containerRect.top;
+
+                tl.to(skull, {
+                    x, y: y - config.hopHeight, opacity: 1,
+                    duration: 0.3,
+                    ease: "power1.out"
+                }).to(skull, {
+                    y: y - 10,
+                    duration: 0.3,
+                    ease: "bounce.out",
+                    onStart: () => {
+                        gsap.to(skull, {
+                            scaleX: 1.2,
+                            scaleY: 0.8,
+                            duration: 0.1,
+                            yoyo: true,
+                            repeat: 1
+                        });
+                    },
+                    onComplete: () => {
+                        const letterRect = letter.getBoundingClientRect();
+                        const containerRect = animationContainer.getBoundingClientRect();
+                        const centerX = letterRect.left - containerRect.left + rect.width / 2;
+                        const centerY = letterRect.top - containerRect.top + rect.height / 2;
+
+                        createHeartExplosion(centerX, centerY, config.particleCount);
+
+                        gsap.to(letter, { 
+                            opacity: 0, 
+                            scale: 0, 
+                            rotation: Math.random() * 180 - 90,
+                            duration: 0.2 
+                        });
+                    }
+                });
+            });
+
+            const centerX = animationContainer.offsetWidth / 2 - skull.offsetWidth / 2;
+            const centerY = animationContainer.offsetHeight / 2 - skull.offsetHeight / 2;
+
+            return tl.to(skull, { x: centerX, y: centerY, duration: 0.8, ease: "power2.inOut" })
+                .to(skull, { scale: 1.2, rotation: 10, duration: 0.1, yoyo: true, repeat: 1 })
+                .to(skull, {
+                    scale: 1.5, duration: 0.2,
+                    onComplete: () => {
+                        const skullRect = skull.getBoundingClientRect();
+                        const containerRect = animationContainer.getBoundingClientRect();
+                        const cx = skullRect.left - containerRect.left + skullRect.width / 2;
+                        const cy = skullRect.top - containerRect.top + skullRect.height / 2;
+
+                        skull.style.opacity = 0;
+                        createHeartExplosion(cx, cy, 20);
+                        gsap.to(finalHeart, {
+                            scale: 1,
+                            opacity: 1,
+                            duration: 0.8,
+                            ease: "elastic.out(1, 0.5)"
+                        });
+                        heartAnimation();
+                    }
+                });
+        }
+
+        function heartAnimation() {
+            return gsap.timeline()
+                .to(finalHeart, { scale: 1.3, duration: 0.4 })
+                .to(finalHeart, { scale: 1, duration: 0.4 })
+                .repeat(2)
+                .to(finalHeart, { scale: 0, opacity: 0, duration: 0.3 });
+        }
+
+        function createHeartExplosion(x, y, count = 20) {
+            const symbols = ['❤', '🦴', '💀', '💕', '🔪', '⛓️'];
+
+            for (let i = 0; i < count; i++) {
+                const el = document.createElement('div');
+                el.textContent = symbols[Math.floor(Math.random() * symbols.length)];
+                el.style.cssText = `
+                    position: absolute;
+                    font-size: ${Math.random() * 20 + 12}px;
+                    left: ${x}px;
+                    top: ${y}px;
+                    color: #ff0000;
+                    filter: drop-shadow(0 0 5px rgba(255, 0, 0, 0.7));
+                    pointer-events: none;
+                `;
+                animationContainer.appendChild(el);
+
+                const angle = Math.random() * Math.PI * 2;
+                const distance = Math.random() * 100 + 50;
+
+                gsap.to(el, {
+                    x: Math.cos(angle) * distance,
+                    y: Math.sin(angle) * distance,
+                    opacity: 0,
+                    rotation: Math.random() * 360,
+                    duration: 1.2,
+                    ease: "power2.out",
+                    onComplete: () => el.remove()
+                });
+            }
+        }
+
+        function resetState() {
+            letters.forEach(letter =>
+                gsap.set(letter, { clearProps: 'all', opacity: 1, scale: 1 })
+            );
+            gsap.set(finalHeart, { scale: 0, opacity: 0 });
+            gsap.set(skull, { opacity: 0, scale: 1, x: 0, y: 0 });
+        }
+
+        function togglePause() {
+            config.isPaused = !config.isPaused;
+            config.isPaused ? masterTimeline.pause() : masterTimeline.play();
+            pauseBtn.textContent = config.isPaused ? "Resume" : "Pause";
+        }
+
+        function reset() {
+            if (masterTimeline) masterTimeline.kill();
+            initAnimation();
+        }
+
+        // Create occasional blood drips
+        function createRandomBloodDrips() {
+            if (document.querySelector('.letter').style.display !== 'none') {
+                createBloodDrip(document.querySelector('.letter'));
+            }
+            
+            // Schedule next drip
+            setTimeout(createRandomBloodDrips, 5000 + Math.random() * 5000);
+        }
+        
+        // Start random blood drips
+        setTimeout(createRandomBloodDrips, 3000);
+
+        // Connect the letter to the animation
+        continueBtn.addEventListener('click', function() {
+            document.querySelector('.letter').style.display = 'none';
+            continueBtn.style.display = 'none';
+            animationContainer.style.display = 'block';
+            initAnimation();
+        });
+    </script>
+</body>
+</html>
