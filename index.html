@@ -6,11 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>        
+<style>        
         body {
             font-family: 'Special Elite', cursive;
-            background: #1a0808;
-            background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23300000' fill-opacity='0.08' fill-rule='evenodd'%3E%3Cpath d='M0 38.59l2.83-2.83 1.41 1.41L1.41 40H0v-1.41zM0 1.4l2.83 2.83 1.41-1.41L1.41 0H0v1.41zM38.59 40l-2.83-2.83 1.41-1.41L40 38.59V40h-1.41zM40 1.41l-2.83 2.83-1.41-1.41L38.59 0H40v1.41zM20 18.6l2.83-2.83 1.41 1.41L21.41 20l2.83 2.83-1.41 1.41L20 21.41l-2.83 2.83-1.41-1.41L18.59 20l-2.83-2.83 1.41-1.41L20 18.59z'/%3E%3C/g%3E%3C/svg%3E");
+            background: #111111;
+            background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23aaaaaa' fill-opacity='0.08' fill-rule='evenodd'%3E%3Cpath d='M0 38.59l2.83-2.83 1.41 1.41L1.41 40H0v-1.41zM0 1.4l2.83 2.83 1.41-1.41L1.41 0H0v1.41zM38.59 40l-2.83-2.83 1.41-1.41L40 38.59V40h-1.41zM40 1.41l-2.83 2.83-1.41-1.41L38.59 0H40v1.41zM20 18.6l2.83-2.83 1.41 1.41L21.41 20l2.83 2.83-1.41 1.41L20 21.41l-2.83 2.83-1.41-1.41L18.59 20l-2.83-2.83 1.41-1.41L20 18.59z'/%3E%3C/g%3E%3C/svg%3E");
             text-align: center;
             padding: 20px;
             margin: 0;
@@ -19,7 +19,7 @@
             flex-direction: column;
             justify-content: center;
             overflow-x: hidden;
-            color: #ff9999;
+            color: #cccccc;
             position: relative;
         }
         
@@ -30,14 +30,14 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: radial-gradient(circle at center, transparent 30%, rgba(0,0,0,0.5) 100%);
+            background: radial-gradient(circle at center, transparent 30%, rgba(0,0,0,0.7) 100%);
             pointer-events: none;
             z-index: -1;
         }
         
         .letter {
-            background: #0a0000;
-            border: 3px solid #880000;
+            background: #0a0a0a;
+            border: 3px solid #444444;
             box-shadow: 0 0 15px rgba(255, 0, 0, 0.3);
             max-width: 500px;
             margin: 20px auto;
@@ -67,7 +67,7 @@
             font-family: 'Metal Mania', cursive;
             text-shadow: 0 0 5px #ff0000;
             letter-spacing: 2px;
-            color: #ff3333;
+            color: #ffffff;
             transform: rotate(-1deg);
         }
         
@@ -78,7 +78,7 @@
         
         .hidden {
             display: none;
-            color: #ff6666;
+            color: #eeeeee;
             margin-top: 20px;
             animation: fadeIn 1s ease;
             font-family: 'Special Elite', cursive;
@@ -103,7 +103,7 @@
             font-size: 64px;
             font-weight: bold;
             font-family: 'Arial', sans-serif;
-            color: #ff3333;
+            color: #ffffff;
             z-index: 10;
             user-select: none;
             text-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
@@ -161,9 +161,9 @@
         
         .btn {
             padding: 8px 16px;
-            background: rgba(0, 0, 0, 0.7);
+            background: rgba(20, 20, 20, 0.7);
             color: #ff3333;
-            border: 1px solid #700000;
+            border: 1px solid #444444;
             border-radius: 3px;
             cursor: pointer;
             font-weight: bold;
@@ -177,15 +177,15 @@
         }
         
         .reset-btn {
-            background: rgba(80, 0, 0, 0.7);
+            background: rgba(40, 40, 40, 0.7);
         }
         
         .continue-btn {
             display: none;
             margin: 20px auto;
             padding: 10px 25px;
-            background: #500000;
-            color: #ff9999;
+            background: #222222;
+            color: #ffffff;
             border: 1px solid #ff0000;
             border-radius: 3px;
             cursor: pointer;
@@ -215,7 +215,7 @@
         }
         
         .continue-btn:hover {
-            background: #700000;
+            background: #333333;
             transform: scale(1.05);
             box-shadow: 0 0 15px rgba(255, 0, 0, 0.5);
         }
@@ -233,7 +233,7 @@
         .barbed-wire {
             position: fixed;
             height: 15px;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 15' width='100' height='15'%3E%3Cpath d='M0,7.5 L100,7.5' stroke='%23700000' stroke-width='1'/%3E%3Cpath d='M10,7.5 L10,2 M10,2 L8,0 M10,2 L12,0 M10,7.5 L10,13 M10,13 L8,15 M10,13 L12,15' stroke='%23700000' stroke-width='1'/%3E%3Cpath d='M30,7.5 L30,2 M30,2 L28,0 M30,2 L32,0 M30,7.5 L30,13 M30,13 L28,15 M30,13 L32,15' stroke='%23700000' stroke-width='1'/%3E%3Cpath d='M50,7.5 L50,2 M50,2 L48,0 M50,2 L52,0 M50,7.5 L50,13 M50,13 L48,15 M50,13 L52,15' stroke='%23700000' stroke-width='1'/%3E%3Cpath d='M70,7.5 L70,2 M70,2 L68,0 M70,2 L72,0 M70,7.5 L70,13 M70,13 L68,15 M70,13 L72,15' stroke='%23700000' stroke-width='1'/%3E%3Cpath d='M90,7.5 L90,2 M90,2 L88,0 M90,2 L92,0 M90,7.5 L90,13 M90,13 L88,15 M90,13 L92,15' stroke='%23700000' stroke-width='1'/%3E%3C/svg%3E");
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 15' width='100' height='15'%3E%3Cpath d='M0,7.5 L100,7.5' stroke='%23444444' stroke-width='1'/%3E%3Cpath d='M10,7.5 L10,2 M10,2 L8,0 M10,2 L12,0 M10,7.5 L10,13 M10,13 L8,15 M10,13 L12,15' stroke='%23444444' stroke-width='1'/%3E%3Cpath d='M30,7.5 L30,2 M30,2 L28,0 M30,2 L32,0 M30,7.5 L30,13 M30,13 L28,15 M30,13 L32,15' stroke='%23444444' stroke-width='1'/%3E%3Cpath d='M50,7.5 L50,2 M50,2 L48,0 M50,2 L52,0 M50,7.5 L50,13 M50,13 L48,15 M50,13 L52,15' stroke='%23444444' stroke-width='1'/%3E%3Cpath d='M70,7.5 L70,2 M70,2 L68,0 M70,2 L72,0 M70,7.5 L70,13 M70,13 L68,15 M70,13 L72,15' stroke='%23444444' stroke-width='1'/%3E%3Cpath d='M90,7.5 L90,2 M90,2 L88,0 M90,2 L92,0 M90,7.5 L90,13 M90,13 L88,15 M90,13 L92,15' stroke='%23444444' stroke-width='1'/%3E%3C/svg%3E");
             width: 100%;
             background-repeat: repeat-x;
             z-index: 5;
